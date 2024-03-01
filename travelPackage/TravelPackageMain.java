@@ -5,12 +5,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The Main Application 
+ * @author Kushal Singhal
+ * @version v1.0
+ */
 public class TravelPackageMain{
+
+    /*
+     * Important properties for this Main Application
+     */
     public static List<TravelPackage> allTravelPackage;
     static List<Destination> allDestinations;
     static List<Activity> allActivities;
     public static List<Passenger> allPassengers;
+
     static Scanner sc = new Scanner(System.in);
+
+    /**
+     * Main Function of the Application
+     * @param args Arguments from CLI
+     */
     public static void main(String[] args){
         System.out.println("**** Welcome to Travel Nymble ****");
         allTravelPackage = new ArrayList<TravelPackage>();
@@ -19,6 +34,10 @@ public class TravelPackageMain{
         allPassengers = new ArrayList<Passenger>();
         mainPannel();
     }
+
+    /**
+     * Main Panel Of Our Application
+     */
     public static void mainPannel(){
         Integer option;
         while(true){
@@ -34,15 +53,19 @@ public class TravelPackageMain{
                     adminPannel();
                     break;
                 case 2:
-                passengerPannel();
+                    passengerPannel();
                     break;
-                    case 3:
+                case 3:
                     System.exit(0);
-                    default:
+                default:
                     System.out.println("Please enter a correct input!!!\n");
                 }
         }
     }
+
+    /**
+     * Function to Display all Tasks related to ADMIN
+     */
     public static void adminPannel(){
         System.out.println("\n*** Welcome to Admin Pannel *** ");
         
@@ -74,12 +97,16 @@ public class TravelPackageMain{
                 }
         }
     }
+
+    /**
+     * Function to Display all Tasks related to Travel Package
+     */
     public static void travelPackagePannel(){
         System.out.println("\n*** Welcome to Travel Package Pannel *** ");
         Integer option;
         while(true){
             System.out.println("\n*** Travel Package Pannel *** \n");
-            System.out.println("1. Add Travel Pacakge");
+            System.out.println("1. Add Travel Package");
 			System.out.println("2. Add Destinantion to Travel Package");
 			System.out.println("3. Print Itinerary");
 			System.out.println("4. Print Passenger List");
@@ -96,7 +123,7 @@ public class TravelPackageMain{
                     break;
                 case 3 :
                     if(allTravelPackage == null || allTravelPackage.size() == 0){
-                        System.out.println("No Travel Pacakge Present!!!\nCreate a Package First!!!");
+                        System.out.println("No Travel Package Present!!!\nCreate a Package First!!!");
                         break;
                     }
                     System.out.println("Please select the Travel Package");
@@ -108,7 +135,7 @@ public class TravelPackageMain{
                     break;
                 case 4 :
                     if(allTravelPackage == null || allTravelPackage.size() == 0){
-                        System.out.println("No Travel Pacakge Present!!!\nCreate a Package First!!!");
+                        System.out.println("No Travel Package Present!!!\nCreate a Package First!!!");
                         break;
                     }
                     System.out.println("Please select the Travel Package");
@@ -117,18 +144,20 @@ public class TravelPackageMain{
                     }
                     option = sc.nextInt();
                     allTravelPackage.get(option - 1 ).printPassengerList();
-                    
                     break;
                 case 5:
                     adminPannel();
                     break;
-                    default:
+                default:
                     System.out.println("Please enter a correct input!!!\n");
                 }
             }
             
         } 
-        
+
+        /**
+          * Function to Display all Tasks related to Destination
+        */
         public static void destinationPannel(){
         System.out.println("\n*** Welcome to Destination Pannel *** ");
         Integer option;
@@ -156,6 +185,9 @@ public class TravelPackageMain{
         }
 
     }
+    /**
+     * Function to Display all Tasks related to Activity
+     */
     public static void activityPannel(){
         
         System.out.println("\n*** Welcome to Activity Pannel *** ");
@@ -188,6 +220,9 @@ public class TravelPackageMain{
         }
     }
 	
+    /**
+     * Function to Display all Tasks related to Passenger
+     */
 	public static void passengerPannel(){
         System.out.println("\n*** Welcome to Passenger Pannel *** ");
 		
@@ -220,6 +255,10 @@ public class TravelPackageMain{
 		}
 	}
 
+    /**
+     * Function to Add a Passenger to a Package
+     * @see {@linkplain TravelPackage.addPassenger()} method used
+     */
 	public static void addPassengerToPackage(){
 		if((allPassengers != null || allPassengers.size() != 0) && (allTravelPackage != null || allTravelPackage.size() != 0)){
             if(allPassengers == null || allPassengers.size() == 0){
@@ -249,6 +288,11 @@ public class TravelPackageMain{
 			System.out.println("Data Incomplete !!!");
 		}
 	}
+
+    /**
+     * Function to Register a Passenger to Activity
+     * @see {@linkplain Activity.passengerSignUp()} method used
+     */
 	public static void addPassengerToActivity(){
         if((allPassengers != null || allPassengers.size() != 0) && (allActivities != null || allActivities.size() != 0)){
             if(allPassengers == null || allPassengers.size() == 0){
@@ -278,8 +322,12 @@ public class TravelPackageMain{
 		}else{
 			System.out.println("Data Incomplete !!!");
 		}
-		
 	}
+
+    /**
+     * Adding Destination to A Travel Package
+     * @see {@linkplain TravelPackage.addDestination()} method used
+     */
 	public static void travelPackageAllotment(){
         if((allDestinations != null || allDestinations.size() != 0) && (allTravelPackage != null || allTravelPackage.size() != 0) ){
             if(allDestinations == null || allDestinations.size() == 0){
@@ -311,8 +359,12 @@ public class TravelPackageMain{
 		}else{
 			System.out.println("Data Incomplete !!!");
 		}
-		
 	}
+
+    /**
+     * Adding Destination to an Activity
+     * @see {@linkplain Destination.addActivity()} method used 
+     */
 	public static void destinationAllotment(){
         if((allActivities != null || allActivities.size() != 0) && (allDestinations != null || allDestinations.size() != 0)){
             if(allActivities == null || allActivities.size() == 0){
@@ -344,9 +396,13 @@ public class TravelPackageMain{
 		}
 
 	}
+
+    /**
+     * Function to Display All Activities that has not reached the Passenger Limit
+     */
     public static void vacantActivity(){
         for(Activity activity : allActivities){
-            if(activity.getPassenger().size()<activity.getCapacity()){
+            if(activity.getPassenger().size() < activity.getCapacity()){
                 System.out.println("Activity Name: " + activity.getName());
                 System.out.println("Activity Cost: " + activity.getCost());
                 System.out.println("Activity Capacity: " + activity.getCapacity());
@@ -355,7 +411,10 @@ public class TravelPackageMain{
         }
     }
 
-    // All Adding Part
+    /**
+     * Adding Passenger To the Main Application DataBase
+     * 
+     */
     public static void addPassenger(){
         System.out.println("\n*** Please Enter Passenger Information ***");
         System.out.print("Enter Name : ");
@@ -363,8 +422,6 @@ public class TravelPackageMain{
         System.out.print("Enter Passenger Type : ");
         String passengerType = sc.next();
         double balance;
-        System.out.println(passengerType.toUpperCase());
-        System.out.println(PassengerType.PREMIUM.name());
         if(!passengerType.toUpperCase().equalsIgnoreCase(PassengerType.PREMIUM.name())){
             System.out.print("Enter Current Balance : ");
             balance = sc.nextInt();
@@ -379,11 +436,15 @@ public class TravelPackageMain{
         }else{
             pType = PassengerType.PREMIUM;
         }
-        System.out.println(pType);
         Passenger passenger = new Passenger(name, pType,((passengerType.toUpperCase().equalsIgnoreCase(PassengerType.PREMIUM.name())) ? 0.0 : balance) );
         allPassengers.add(passenger);
         System.out.println("\nPassenger " + name + " Added Successfully !!!");
     }
+
+    /**
+     * Adding Destination To the Main Application DataBase
+     * 
+     */
     public static void addDestination(){
         System.out.println("\n*** Please Enter Destination Information ***");
         System.out.print("Enter Name : ");
@@ -392,6 +453,11 @@ public class TravelPackageMain{
         allDestinations.add(destination);
         System.out.println("\nDestination " + name + " Added Successfully !!!");
     }
+
+    /**
+     * Adding Travel Package To the Main Application DataBase
+     * 
+     */
     public static void addTravelPackage(){
         System.out.println("\n*** Please Enter Travel Package Information ***");
         System.out.print("Enter Name : ");
@@ -402,6 +468,11 @@ public class TravelPackageMain{
         allTravelPackage.add(travelPackage);
         System.out.println("\nTravel Package " + name + " Added Successfully !!!\n");
     }
+
+    /**
+     * Adding Activity To the Main Application DataBase
+     * 
+     */
     public static  void addActivity(){
         System.out.println("\n*** Please Enter Activity Information ***");
         System.out.print("Enter Name : ");
